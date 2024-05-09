@@ -75,11 +75,11 @@ def read_dataframe(file_location: str, encoding: str = 'utf-8') -> pd.DataFrame:
     # Clean column names
     cleaned_df = clean_column_names(df)
 
-    # Sample down to 4500 rows if necessary
-    if len(cleaned_df) > 4500:
-        logger.info(
-            "Dataframe has more than 4500 rows. We will sample 4500 rows.")
-        cleaned_df = cleaned_df.sample(4500)
+    # # Sample down to 4500 rows if necessary
+    # if len(cleaned_df) > 4500:
+    #     logger.info(
+    #         "Dataframe has more than 4500 rows. We will sample 4500 rows.")
+    #     cleaned_df = cleaned_df.sample(4500)
 
     if cleaned_df.columns.tolist() != df.columns.tolist():
         write_funcs = {
