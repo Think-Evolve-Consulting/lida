@@ -56,8 +56,8 @@ def read_dataframe(file_location: str, encoding: str = 'utf-8') -> pd.DataFrame:
     read_funcs = {
         'json': lambda: pd.read_json(file_location, orient='records', encoding=encoding),
         'csv': lambda: pd.read_csv(file_location, encoding=encoding),
-        'xls': lambda: pd.read_excel(file_location, encoding=encoding),
-        'xlsx': lambda: pd.read_excel(file_location, encoding=encoding),
+        'xls': lambda: pd.read_excel(file_location), # encoding=encoding),
+        'xlsx': lambda: pd.read_excel(file_location), #encoding=encoding),
         'parquet': pd.read_parquet,
         'feather': pd.read_feather,
         'tsv': lambda: pd.read_csv(file_location, sep="\t", encoding=encoding)
