@@ -197,7 +197,7 @@ if 'page' not in st.session_state:
     if 'page' in query_params:
         st.session_state.page = query_params['page'][0]
     else:
-        st.session_state.page = 'dashboard'  # Default page
+        st.session_state.page = 'upload'  # Default page
 
 # Sidebar navigation panel
 with st.sidebar:
