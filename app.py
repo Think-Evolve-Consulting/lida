@@ -139,7 +139,7 @@ def show_gen_ai_page():
 
             # Proceed to generate visualizations after goal is submitted
             # Dummy key for OpenAI (replace with a valid key)
-            openai_key = "your_openai_key_here"
+            openai_key = "your_api_key"
 
             from lida import Manager, TextGenerationConfig, llm
             lida = Manager(text_gen=llm("openai", api_key=openai_key))
@@ -201,22 +201,47 @@ if 'page' not in st.session_state:
 
 # Sidebar navigation panel
 with st.sidebar:
-    # Buttons for navigation
     if st.button("Upload"):
         st.session_state.page = 'upload'
-        # Set query parameters in the URL to simulate routes
         st.experimental_set_query_params(page='upload')
-        st.experimental_rerun()  # Rerun the app to reflect the page change
-
-    if st.button("Dashboard"):
-        st.session_state.page = 'dashboard'
-        st.experimental_set_query_params(page='dashboard')
         st.experimental_rerun()  # Rerun the app to reflect the page change
 
     if st.button("GenAI DataQuery"):
         st.session_state.page = 'genai'
         st.experimental_set_query_params(page='genai')
         st.experimental_rerun()  # Rerun the app to reflect the page change
+
+    # Use markdown to create a hyperlink for the "Dashboard" with green text and border on hover
+    st.markdown(
+        '''
+        <style>
+        .dashboard-button {
+            background-color: rgb(255,255,255);  /* Same background as default */
+            color: rgb(38, 39, 48);  /* Default text color */
+            padding: 0.25rem 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid rgba(49, 51, 63, 0.4);  /* Default border */
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            width: 100%;
+            transition: color 0.3s ease, border-color 0.3s ease;  /* Smooth transition for color and border */
+        }
+        .dashboard-button:hover {
+            color: rgb(0, 153, 0);  /* Text turns green on hover */
+            border-color: rgb(0, 153, 0);  /* Border turns green on hover */
+        }
+        </style>
+        <a href="http://ec2-34-207-119-191.compute-1.amazonaws.com:8088/superset/welcome/" target="_blank">
+            <div class="dashboard-button">Dashboard</div>
+        </a>
+        ''',
+        unsafe_allow_html=True
+    )
+
 
 # Display the appropriate page based on the session state
 if st.session_state.page == 'upload':
