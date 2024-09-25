@@ -166,7 +166,7 @@ def initialize_uploaded_reports():
 
 # Initialize session state for page
 if 'page' not in st.session_state:
-    st.session_state.page = 'upload'  # Default page
+    st.session_state.page = 'genai'  # Default page
 
 # Call the initialization function
 initialize_uploaded_reports()
