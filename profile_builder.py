@@ -517,18 +517,7 @@ class StructuredColProfiler:
         self.update_column_profilers(clean_sampled_df, pool)
 
     def _get_sample_size(self, df_series: pd.Series) -> int:
-        """
-        Determine the minimum sampling size for detecting column type.
-
-        :param df_series: a column of data
-        :type df_series: pandas.core.series.Series
-        :return: integer sampling size
-        :rtype: int
-        """
-        len_df = len(df_series)
-        if len_df <= self._min_sample_size:
-            return int(len_df)
-        return max(int(self._sampling_ratio * len_df), self._min_sample_size)
+        return len(df_series)
 
     # TODO: flag column name with null values and potentially return row
     #  index number in the error as well
