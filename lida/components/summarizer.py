@@ -22,7 +22,9 @@ logger = logging.getLogger("lida")
 class Summarizer():
     def __init__(self) -> None:
         self.summary = None
-
+        
+        
+    ##UPDATED START - for DATAQUERY - 26SEPT2024
     def profile_dataset(self, df: pd.DataFrame) -> dict:
         """Profile the dataset using DataProfiler"""
         profile = dp.Profiler(df)  # Profile the dataset
@@ -44,6 +46,8 @@ class Summarizer():
             properties_list.append({"column": col_profile["column_name"], "properties": properties})
 
         return properties_list
+    ##UPDATED END - for DATAQUERY - 26SEPT2024
+    
 
     def enrich(self, base_summary: dict, text_gen: TextGenerator,
                textgen_config: TextGenerationConfig) -> dict:
