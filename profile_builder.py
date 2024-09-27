@@ -59,7 +59,9 @@ class StructuredColProfiler:
         self,
         df_series: pd.Series = None,
         sample_size: int = None,
+        ##UPDATED START - for DATAQUERY - 26SEPT2024
         min_sample_size: int = None,
+        ##UPDATED END - for DATAQUERY - 26SEPT2024
         sampling_ratio: float = 0.2,
         min_true_samples: int = 0,
         sample_ids: np.ndarray = None,
@@ -517,7 +519,17 @@ class StructuredColProfiler:
         self.update_column_profilers(clean_sampled_df, pool)
 
     def _get_sample_size(self, df_series: pd.Series) -> int:
+        """
+        Determine the minimum sampling size for detecting column type.
+
+        :param df_series: a column of data
+        :type df_series: pandas.core.series.Series
+        :return: integer sampling size
+        :rtype: int
+        """
+        ##UPDATED START - for DATAQUERY - 26SEPT2024
         return len(df_series)
+        ##UPDATED END - for DATAQUERY - 26SEPT2024
 
     # TODO: flag column name with null values and potentially return row
     #  index number in the error as well
@@ -830,7 +842,9 @@ class BaseProfiler:
 
     def _get_sample_size(self, data: pd.Series | pd.DataFrame | list) -> int:
         # Use the full dataset instead of sampling
+        ##UPDATED START - for DATAQUERY - 26SEPT2024
         return len(data)
+        ##UPDATED END - for DATAQUERY - 26SEPT2024
 
 
     @property
